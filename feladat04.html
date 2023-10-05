@@ -4,6 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS - Stringfüggvények</title>
+    <script>
+        // Eseménykezelő függvény referenciával
+        document.addEventListener("DOMContentLoaded", initialize);
+
+        function initialize() {
+            const atalakit_gomb = document.getElementById('atalakit');
+            //atalakit_gomb.addEventListener("click", atalakitas);
+
+            // Eseménykezelő arrow functionnal
+            atalakit_gomb.addEventListener("click", () => {
+                const szoveg = document.getElementById("szoveg").value;
+                const kisbetus = document.getElementById("kisbetus").checked;
+                const nagybetus = document.getElementById("nagybetus").checked;
+                const kimenet = document.getElementById("kimenet");
+
+                if (kisbetus) {
+                    kimenet.innerHTML = kisbetusse(szoveg);
+                } else if (nagybetus) {
+                    kimenet.innerHTML = szoveg.toUpperCase();
+                }
+            });
+        }
+
+        /*
+            arrow function
+            (praméterek) => { utasítások; }
+            ha csak 1 paraméter van a () elhagyható
+            ha csak 1 utasítás van a {} elhagyható (ha vissza akarunk adni az arrow functionnel valamit, akkor nem kell return, ha nincs kapcsos zárójel)
+        */
+       /*
+       const lista = [];
+       lista.forEach(elem => console.log(elem));
+       */
+       const kisbetusse = szoveg => szoveg.toLowerCase();
+        //console.log(initialize);
+    </script>
 </head>
 <body>
     <div>
@@ -17,5 +53,7 @@
     </div>
 
     <button id="atalakit">Átalakít</button>
+
+    <p id="kimenet"></p>
 </body>
 </html>
